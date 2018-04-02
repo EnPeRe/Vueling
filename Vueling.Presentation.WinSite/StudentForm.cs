@@ -33,7 +33,9 @@ namespace Vueling.Presentation.WinSite
         {
             this.SaveStudentData(sender);
             //MessageBox(String.Format("You have saved an student in {0} format", (Button)sender.Text));
-            StdCont.SendToBusiness(student);
+            //StdCont.SendToBusiness(student);
+            IStudentBL stdbl = new StudentBL();
+            stdbl.BusinessLogic(student);
             //this.ClearTextBoxs();
         } 
 

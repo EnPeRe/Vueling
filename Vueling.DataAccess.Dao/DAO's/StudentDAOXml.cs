@@ -43,30 +43,7 @@ namespace Vueling.DataAccess.Dao
                     serializer.Serialize(writer, liststudents);
                 }
             }
-
-
-            //XmlDocument xmlDocument = new XmlDocument();
-            //XmlSerializer serializer = new XmlSerializer(student.GetType());
-            //using (MemoryStream stream = new MemoryStream())
-            //{
-            //    serializer.Serialize(stream, student);
-            //    stream.Position = 0;
-            //    xmlDocument.Load(stream);
-            //    xmlDocument.Save(path);
-            //    stream.Close();
-            //}
-
-
-            /*
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-
-            using (XmlWriter writer = XmlWriter.Create(path, settings))
-            {
-                student.ToXml();
-            }
-            */
-
+            
             return student;
         }
     }

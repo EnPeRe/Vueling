@@ -37,32 +37,6 @@ namespace Vueling.DataAccess.Dao
                 }
             }
 
-
-/*
-            if (!File.Exists(path))
-            {
-                using (TextWriter writer = new StreamWriter(path, append: true))
-                {
-                    writer.WriteLine("[" + student.ToJson() + "]");
-                }
-
-            }
-            else
-            {
-                using(StreamReader reader = new StreamReader(path))
-                {
-                    string json = reader.ReadToEnd();
-                    using (TextWriter writer = new StreamWriter(path, append: true))
-                    {
-                        string jsonreplaced = json.Replace(']', ',');
-                        writer.WriteLine(student.ToJson() + "]");
-                    }
-
-
-                }
-            }
-*/
-
             return student;
 
         }
