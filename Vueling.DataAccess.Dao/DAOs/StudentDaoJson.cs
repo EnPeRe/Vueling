@@ -6,15 +6,21 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vueling.Presentation.WinSite;
+using Vueling.Common.Logic.Models;
 
 namespace Vueling.DataAccess.Dao
 {
-    public class StudentDAOJson : IStudentDAO
+    public class StudentDaoJson : IStudentDao
     {
-        private List<Student> liststudents = new List<Student>();
+        private List<Student> liststudents;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+
         public Student Add(Student student)
         {
+            log.Info("Metodo " + System.Reflection.MethodBase.GetCurrentMethod().Name +
+                " iniciado");
+            liststudents = new List<Student>();
             string path = ConfigurationManager.AppSettings["ConfigPathJson"].ToString();
 
             if (File.Exists(path))
@@ -36,6 +42,12 @@ namespace Vueling.DataAccess.Dao
                     writer.WriteLine(student.ToJson());
                 }
             }
+
+
+            //var group = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(Filename));
+            //return group.FirstOrDefault(i => (Guid)typeof(T).GetProperty("Guid").GetValue(i) == guid);
+            log.Info("Metodo " + System.Reflection.MethodBase.GetCurrentMethod().Name +
+                " terminado");
 
             return student;
 

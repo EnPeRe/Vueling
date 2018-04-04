@@ -1,4 +1,5 @@
-﻿using System;
+﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,15 @@ using Vueling.Common.Logic.Models;
 
 namespace Vueling.Presentation.WinSite
 {
+
     public partial class StudentForm : Form
     {
         private Student student;
         private IStudentBL studentBL;
         private StudentController StdCont;
+
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
         public StudentForm()
         {
@@ -32,43 +37,47 @@ namespace Vueling.Presentation.WinSite
         private void buttonTxt_Click(object sender, EventArgs e)
         {
             this.SaveStudentData(sender);
-            //MessageBox(String.Format("You have saved an student in {0} format", (Button)sender.Text));
-            //StdCont.SendToBusiness(student);
-            IStudentBL stdbl = new StudentBL();
-            stdbl.BusinessLogic(student);
-            //this.ClearTextBoxs();
-        } 
+            studentBL.BusinessLogic(student);
+
+            MessageBox.Show(String.Format("You have saved an student in {0} format", ((Button)sender).Text));
+
+        }
 
         private void buttonJson_Click(object sender, EventArgs e)
         {
             this.SaveStudentData(sender);
-            StdCont.SendToBusiness(student);
-            //this.ClearTextBoxs();
+            studentBL.BusinessLogic(student);
+
+            MessageBox.Show(String.Format("You have saved an student in {0} format", ((Button)sender).Text));
         }
 
         private void buttonXml_Click(object sender, EventArgs e)
         {
             this.SaveStudentData(sender);
-            StdCont.SendToBusiness(student);
-            //this.ClearTextBoxs();
-        }
+            //StdCont.SendToBusiness(student);
+            studentBL.BusinessLogic(student);
 
+            MessageBox.Show(String.Format("You have saved an student in {0} format", ((Button)sender).Text));
+        }
 
         private void SaveStudentData(object sender)
         {
+            log.Info("Metodo SaveStudentData iniciado");
             student.Nombre = this.textBoxNombre.Text;
             student.IdAlumno = Convert.ToInt32(this.textBoxId.Text);
             student.Apellido = this.textBoxApellidos.Text;
             student.FechaNacimiento = Convert.ToDateTime(this.textBoxFechaNacimiento.Text);
-            student.HoraRegistro = DateTime.Now;
             student.Dni = this.textBoxDni.Text;
             student.Student_Guid = Guid.NewGuid();
             student.SavedFormat = ((Button)sender).Text.ToLower();
+            log.Info("Metodo " + System.Reflection.MethodBase.GetCurrentMethod().Name + " terminado");
         }
 
-        private void ClearTextBoxs()
+        private void buttonToList_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            StudentListForm studentlist = new StudentListForm();
+            studentlist.Show();
         }
     }
 }

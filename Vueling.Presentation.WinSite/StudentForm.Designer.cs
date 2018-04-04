@@ -41,6 +41,7 @@
             this.textBoxFechaNacimiento = new System.Windows.Forms.TextBox();
             this.buttonJson = new System.Windows.Forms.Button();
             this.buttonXml = new System.Windows.Forms.Button();
+            this.buttonToList = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonTxt
@@ -153,11 +154,22 @@
             this.buttonXml.UseVisualStyleBackColor = true;
             this.buttonXml.Click += new System.EventHandler(this.buttonXml_Click);
             // 
+            // buttonToList
+            // 
+            this.buttonToList.Location = new System.Drawing.Point(13, 13);
+            this.buttonToList.Name = "buttonToList";
+            this.buttonToList.Size = new System.Drawing.Size(76, 38);
+            this.buttonToList.TabIndex = 13;
+            this.buttonToList.Text = "mostra tots els alumnes";
+            this.buttonToList.UseVisualStyleBackColor = true;
+            this.buttonToList.Click += new System.EventHandler(this.buttonToList_Click);
+            // 
             // StudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 295);
+            this.Controls.Add(this.buttonToList);
             this.Controls.Add(this.buttonXml);
             this.Controls.Add(this.buttonJson);
             this.Controls.Add(this.textBoxFechaNacimiento);
@@ -193,6 +205,7 @@
         private System.Windows.Forms.TextBox textBoxFechaNacimiento;
         private System.Windows.Forms.Button buttonJson;
         private System.Windows.Forms.Button buttonXml;
+        private System.Windows.Forms.Button buttonToList;
     }
 }
 

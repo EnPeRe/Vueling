@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vueling.Business.Logic;
+using Vueling.Common.Logic.Models;
 
 namespace Vueling.Presentation.WinSite
 {

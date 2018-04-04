@@ -7,16 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using Vueling.Presentation.WinSite;
+using Vueling.Common.Logic.Models;
 
 namespace Vueling.DataAccess.Dao
 {
-    public class StudentDAOXml : IStudentDAO
+    public class StudentDaoXml : IStudentDao
     {
-        private List<Student> liststudents = new List<Student>();
+        private List<Student> liststudents;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
 
         public Student Add(Student student)
         {
+            log.Info("Metodo " + System.Reflection.MethodBase.GetCurrentMethod().Name +
+                " iniciado");
+            liststudents = new List<Student>();
 
             string path = ConfigurationManager.AppSettings["ConfigPathXml"].ToString();
             XmlSerializer serializer = new XmlSerializer(liststudents.GetType());
@@ -43,7 +48,9 @@ namespace Vueling.DataAccess.Dao
                     serializer.Serialize(writer, liststudents);
                 }
             }
-            
+
+            log.Info("Metodo " + System.Reflection.MethodBase.GetCurrentMethod().Name +
+                " terminado");
             return student;
         }
     }
