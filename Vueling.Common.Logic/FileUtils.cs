@@ -13,7 +13,7 @@ namespace Vueling.Common.Logic
         //Serializar
         //Deserializar
         //Crear fichero
-
+        
         private readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\" + typeof(Student).Name + ".txt";
 
         public List<Student> ReadAllTxt()

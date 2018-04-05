@@ -327,7 +327,7 @@
             this.Controls.Add(this.buttonReadTxt);
             this.Controls.Add(this.dGVStudents);
             this.Name = "StudentListForm";
-            this.Text = "StudentList";
+            this.Text = "ListaStudent";
             this.Load += new System.EventHandler(this.StudentListForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dGVStudents)).EndInit();
             this.ResumeLayout(false);
